@@ -1,5 +1,6 @@
 package org.gvozdetscky.lodic.vms;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -32,6 +33,7 @@ public class VMSTest {
         System.out.println("=================================");
     }
 
+    @Ignore
     @Test
     public void testStartVM() {
         int status = vms.startVM("xubuntu");
