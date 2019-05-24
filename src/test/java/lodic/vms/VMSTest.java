@@ -21,6 +21,8 @@ public class VMSTest {
         }
         System.out.println("=================================\n");
 
+        assertNotNull("Не получили список ВМ", listVMS);
+
         listVMS = vms.getListVMS(VMS.RUNNING);
 
         System.out.println("==========LIST=VMS=RUNNING+======");
