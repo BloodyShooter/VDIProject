@@ -8,15 +8,32 @@ import static org.junit.Assert.*;
 
 public class VMSTest {
 
-    @Test
-    public void getListVMS() {
-        VMS vms = new VMS();
-        List<String> listVMS = vms.getListVMS();
+    VMS vms = new VMS();
 
-        System.out.println("==========LIST=VMS===========");
+    @Test
+    public void testGetListVMS() {
+
+        List<String> listVMS = vms.getListVMS(VMS.ALL);
+
+        System.out.println("==========LIST=VMS=ALL===========");
         for (String name: listVMS) {
             System.out.println(name);
         }
-        System.out.println("=============================");
+        System.out.println("=================================\n");
+
+        listVMS = vms.getListVMS(VMS.RUNNING);
+
+        System.out.println("==========LIST=VMS=RUNNING+======");
+        for (String name: listVMS) {
+            System.out.println(name);
+        }
+        System.out.println("=================================");
+    }
+
+    @Test
+    public void testStartVM() {
+        int status = vms.startVM("xubuntu");
+
+        assertEquals("Машина не запустилась", 1,status);
     }
 }
