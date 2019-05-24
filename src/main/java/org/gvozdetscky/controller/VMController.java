@@ -9,7 +9,7 @@ import java.util.List;
 @RestController
 public class VMController {
 
-    @RequestMapping("/getListVM")
+    @RequestMapping("/api/getListVM")
     public String getListVM() {
         VMS vms = new VMS();
         List<String> listVMS = vms.getListVMS(VMS.ALL);
@@ -23,7 +23,7 @@ public class VMController {
         return response;
     }
 
-    @RequestMapping("/getListRunningVM")
+    @RequestMapping("/api/getListRunningVM")
     public String getListRunningVM() {
         VMS vms = new VMS();
         List<String> listVMS = vms.getListVMS(VMS.RUNNING);
@@ -37,7 +37,7 @@ public class VMController {
         return response;
     }
 
-    @RequestMapping("/run")
+    @RequestMapping("/api/run")
     public String runVM() {
         VMS vms = new VMS();
         int status = vms.startVM("xubuntu");
