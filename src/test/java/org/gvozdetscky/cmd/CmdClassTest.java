@@ -1,6 +1,5 @@
-package lodic.cmd;
+package org.gvozdetscky.cmd;
 
-import lodic.cmd.CmdClass;
 import org.junit.Test;
 
 import java.util.List;

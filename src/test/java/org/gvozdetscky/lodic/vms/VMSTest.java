@@ -1,4 +1,4 @@
-package lodic.vms;
+package org.gvozdetscky.lodic.vms;
 
 import org.junit.Test;
 

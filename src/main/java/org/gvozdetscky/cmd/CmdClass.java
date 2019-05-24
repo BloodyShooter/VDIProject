@@ -1,4 +1,4 @@
-package lodic.cmd;
+package org.gvozdetscky.cmd;
 
 import java.io.*;
 import java.util.ArrayList;

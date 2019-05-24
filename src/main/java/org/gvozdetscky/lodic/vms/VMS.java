@@ -1,6 +1,6 @@
-package lodic.vms;
+package org.gvozdetscky.lodic.vms;
 
-import lodic.cmd.CmdClass;
+import org.gvozdetscky.cmd.CmdClass;
 
 import java.util.ArrayList;
 import java.util.List;
