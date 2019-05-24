@@ -1,11 +1,14 @@
-package lodic;
+package lodic.cmd;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-public class Install {
-    public String run(String command) {
+public class CmdClass {
+    public List<String> run(String command) {
 
-        String respuonce = "";
+        List<String> respuonce = new ArrayList<>();
 
         try {
             Process proc = Runtime.getRuntime().exec(command);
@@ -14,17 +17,16 @@ public class Install {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
             String line = "";
             while ((line = bufferedReader.readLine()) != null) {
-                System.out.println(line);
-                respuonce += line + "/n";
+                respuonce.add(line);
             }
 
-            System.out.println();
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (InterruptedException | IOException e) {
             e.printStackTrace();
         }
         return respuonce;
+    }
+
+    public Map<String, String> getEnvMap() {
+        return System.getenv();
     }
 }
