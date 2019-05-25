@@ -6,9 +6,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * Контролер для работы с rest-api методами
+ */
 @RestController
 public class VMController {
 
+    /**
+     * Метод возврашающий список виртуальных машин
+     * @return возврашает список виртуальных машин
+     */
     @RequestMapping("/api/getListVM")
     public String getListVM() {
         VMS vms = new VMS();
@@ -23,6 +30,10 @@ public class VMController {
         return response;
     }
 
+    /**
+     * Метод возврашающий список работающих виртуальных машин
+     * @return возврашает список работающих виртуальных машин
+     */
     @RequestMapping("/api/getListRunningVM")
     public String getListRunningVM() {
         VMS vms = new VMS();
@@ -37,6 +48,10 @@ public class VMController {
         return response;
     }
 
+    /**
+     * Метод для запуска виртуальных машин
+     * @return возврашает сообщение о статусе запуска виртульной машины
+     */
     @RequestMapping("/api/run")
     public String runVM() {
         VMS vms = new VMS();
