@@ -1,6 +1,7 @@
 package org.gvozdetscky.controller;
 
-import org.gvozdetscky.lodic.vms.VMS;
+import org.gvozdetscky.servies.VMServies;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,10 +10,12 @@ import java.util.List;
 @RestController
 public class VMController {
 
+    @Autowired
+    private VMServies vmServies;
+
     @RequestMapping("/api/getListVM")
     public String getListVM() {
-        VMS vms = new VMS();
-        List<String> listVMS = vms.getListVMS(VMS.ALL);
+        List<String> listVMS = vmServies.listAllVMs();
 
         String response = "";
 
@@ -25,8 +28,7 @@ public class VMController {
 
     @RequestMapping("/api/getListRunningVM")
     public String getListRunningVM() {
-        VMS vms = new VMS();
-        List<String> listVMS = vms.getListVMS(VMS.RUNNING);
+        List<String> listVMS = vmServies.listRunningVMs();
 
         String response = "";
 
@@ -34,18 +36,30 @@ public class VMController {
             response += nameVM + "\n";
         }
 
+        System.out.println(response);
+
         return response;
     }
 
     @RequestMapping("/api/run")
     public String runVM() {
-        VMS vms = new VMS();
-        int status = vms.startVM("xubuntu");
+        int status = vmServies.startVM("xubuntu");
 
         if (status == 1) {
             return "Запустили";
         } else {
             return "нет";
+        }
+    }
+
+    @RequestMapping("/api/powerOff")
+    public String powerOffVM() {
+        int status = vmServies.powerOffVM("xubuntu");
+
+        if (status == 1) {
+            return "Вюключили";
+        } else {
+            return "Нет";
         }
     }
 }

@@ -51,5 +51,19 @@ public class VMS {
         return 2;
     }
 
+    public int powerOffVM(String name) {
+        CmdClass cmdClass = new CmdClass();
+
+        String command = "vboxmanage controlvm " + name + " poweroff";
+
+        List<String> respounse = cmdClass.run(command);
+
+        for (String line: respounse) {
+            System.out.println(line);
+        }
+
+        return 1;
+    }
+
 
 }
