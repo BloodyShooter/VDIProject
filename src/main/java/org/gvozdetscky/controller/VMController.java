@@ -3,6 +3,7 @@ package org.gvozdetscky.controller;
 import org.gvozdetscky.servies.VMServies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -55,8 +56,9 @@ public class VMController {
      * @return возврашает сообщение о статусе запуска виртульной машины
      */
     @RequestMapping("/api/run")
-    public String runVM() {
-        int status = vmServies.startVM("xubuntu");
+    public String runVM(@RequestParam(name = "nameVM") String nameVM) {
+
+        int status = vmServies.startVM(nameVM);
 
         if (status == 1) {
             return "Запустили";
@@ -70,8 +72,8 @@ public class VMController {
      * @return возврашает сообщение о статусе выключения виртульной машины
      */
     @RequestMapping("/api/powerOff")
-    public String powerOffVM() {
-        int status = vmServies.powerOffVM("xubuntu");
+    public String powerOffVM(@RequestParam(name = "nameVM") String nameVM) {
+        int status = vmServies.powerOffVM(nameVM);
 
         if (status == 1) {
             return "Вюключили";

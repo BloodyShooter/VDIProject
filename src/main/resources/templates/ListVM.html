@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List VMs</title>
+</head>
+<body>
+<table>
+    <th:block th:each="vm : ${listVMs}">
+        <tr>
+            <td th:text="${vm}"/>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>
