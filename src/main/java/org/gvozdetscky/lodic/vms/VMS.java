@@ -36,7 +36,7 @@ public class VMS {
     public int startVM(String nameVM) {
         CmdClass cmdClass = new CmdClass();
 
-        String command = "VBoxManage startvm " + nameVM + " --type headless";
+        String command = "VBoxManage startvm \"" + nameVM + "\" --type headless";
 
         List<String> respounse = cmdClass.run(command);
 
@@ -54,7 +54,7 @@ public class VMS {
     public int powerOffVM(String name) {
         CmdClass cmdClass = new CmdClass();
 
-        String command = "vboxmanage controlvm " + name + " poweroff";
+        String command = "vboxmanage controlvm \"" + name + "\" poweroff";
 
         List<String> respounse = cmdClass.run(command);
 

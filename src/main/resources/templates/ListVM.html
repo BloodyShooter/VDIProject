@@ -14,8 +14,8 @@
         <tr>
             <td th:text="${vm.getName()}"></td>
             <td th:text="${vm.getStatus()}"></td>
-            <td><a class="btn btn-success" th:href="@{/api/run(nameVM=${vm.getName()})}">Запустить</a></td>
-            <td><a class="btn btn-danger" th:href="@{/api/powerOff(nameVM=${vm.getName()})}">Выключить</a></td>
+            <td><a class="btn btn-success" th:href="@{/runningVM(nameVM=${vm.getName()})}">Запустить</a></td>
+            <td><a class="btn btn-danger" th:href="@{/powerOffVM(nameVM=${vm.getName()})}">Выключить</a></td>
         </tr>
     </th:block>
 </table>

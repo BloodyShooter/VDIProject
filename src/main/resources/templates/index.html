@@ -15,31 +15,12 @@
     <p>
         Пользователь заходит на сайт, и видит список машин, которые ему доступны, он включает нужную машину, и подключается к ней удалленно, так же ему показываются данные для подключения к ВМ. При долгом отсутсвие работы машины, она должны выключится
     </p>
+    <h1>
+        <a href="/getListVM">Список виртуальный машин</a>
+    </h1>
 
-    <a href="/getListVM">Список виртуальный машин</a>
-
-    <br>
-    <br>
-
-    <a href="/api/getListRunningVM">Список работающих виртуальный машин</a>
 
     <br>
     <br>
-
-    <form action="/api/run">
-        <label>
-            <input type="text" name="nameVM">
-            Имя операционной системы
-        </label>
-        <input type="submit" value="Включить" class="btn btn-success">
-    </form>
-
-    <form action="/api/powerOff">
-        <label>
-            <input type="text" name="nameVM">
-            Имя операционной системы
-        </label>
-        <input type="submit" value="Выключить" class="btn btn-danger">
-    </form>
 </body>
 </html>
