@@ -17,8 +17,29 @@
     </p>
 
     <a href="/getListVM">Список виртуальный машин</a>
+
+    <br>
+    <br>
+
     <a href="/api/getListRunningVM">Список работающих виртуальный машин</a>
-    <a href="/api/run?nameVM=xubuntu">Включить виртуальную машину</a>
-    <a href="/api/powerOff?nameVM=xubuntu">Выключить виртуальную машину</a>
+
+    <br>
+    <br>
+
+    <form action="/api/run">
+        <label>
+            <input type="text" name="nameVM">
+            Имя операционной системы
+        </label>
+        <input type="submit" value="Включить" class="btn btn-success">
+    </form>
+
+    <form action="/api/powerOff">
+        <label>
+            <input type="text" name="nameVM">
+            Имя операционной системы
+        </label>
+        <input type="submit" value="Выключить" class="btn btn-danger">
+    </form>
 </body>
 </html>

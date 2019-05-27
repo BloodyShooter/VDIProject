@@ -19,7 +19,7 @@ public class PageController {
     @RequestMapping("/getListVM")
     public String getListVM(Model model) {
 
-        model.addAttribute("listVMs", vmServies.listAllVMs());
+        model.addAttribute("listVMs", vmServies.listVMs());
 
         return "ListVM";
     }
