@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Создаем новую машинку</title>
+</head>
+<body>
+    <form action="/createVM" method="post" name="vm">
+        <label>
+            Имя ВМ:<input type="text" value="Ubuntu" name="name">
+        </label>
+        <label>
+            Тип ОС:<input type="text" value="Ubuntu_64" name="type">
+        </label>
+        <label>
+            RAM:<input type="text" value="2048" name="memory">
+        </label>
+        <label>
+            Port host:<input type="text" value="12345" name="port">
+        </label>
+        <input type="submit" value="Создать">
+    </form>
+</body>
+</html>

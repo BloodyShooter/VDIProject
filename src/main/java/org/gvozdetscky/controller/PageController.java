@@ -6,6 +6,8 @@ import org.gvozdetscky.servies.VMServies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -67,14 +69,14 @@ public class PageController {
         return "redirect:/getListVM";
     }
 
-    @RequestMapping("/createVM")
-    public String connectVM() {
+    @RequestMapping("/createVMPage")
+    public String createVMPage() {
 
-        VM vm = new VM();
-        vm.setName("ubuntu1604");
-        vm.setType("Ubuntu_64");
-        vm.setMemory(2048);
-        vm.setPort("12345");
+        return "createVMPage";
+    }
+
+    @PostMapping(value = "/createVM")
+    public String connectVM(@ModelAttribute VM vm) {
 
         vmServies.createVM(vm);
 
