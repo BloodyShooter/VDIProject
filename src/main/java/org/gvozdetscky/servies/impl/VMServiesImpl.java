@@ -43,4 +43,20 @@ public class VMServiesImpl implements VMServies {
     public int powerOffVM(String nameVM) {
         return vms.powerOffVM(nameVM);
     }
+
+    @Override
+    public void connectVM(String name) {
+        List<String> listRunningVMS = vms.getListVMS(VMS.RUNNING);
+
+        //TODO Доработать сообщение о том что ВМ не запушена
+        if (!listRunningVMS.contains(name)) {
+            System.out.println("Машина " + name + " не запушена");
+            return;
+        }
+
+        VM vm = null;
+
+        vms.connectVM(vm);
+
+    }
 }

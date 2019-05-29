@@ -16,6 +16,7 @@
             <td th:text="${vm.getStatus()}"></td>
             <td><a class="btn btn-success" th:href="@{/runningVM(nameVM=${vm.getName()})}">Запустить</a></td>
             <td><a class="btn btn-danger" th:href="@{/powerOffVM(nameVM=${vm.getName()})}">Выключить</a></td>
+            <td><a class="btn btn-outline-info" th:href="@{/connectVM(nameVM=${vm.getName()})}">Подключится RDP</a></td>
         </tr>
     </th:block>
 </table>

@@ -15,4 +15,6 @@ public interface VMServies {
     int startVM(String nameVM);
 
     int powerOffVM(String nameVM);
+
+    void connectVM(String name);
 }

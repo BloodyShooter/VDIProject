@@ -6,6 +6,10 @@ public class VM {
 
     private String status;
 
+    private String ip;
+
+    private String port;
+
     public VM(String name, String status) {
         this.name = name;
         this.status = status;
@@ -25,5 +29,21 @@ public class VM {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
     }
 }

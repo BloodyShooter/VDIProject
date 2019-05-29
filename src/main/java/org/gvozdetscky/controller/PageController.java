@@ -40,4 +40,12 @@ public class PageController {
 
         return "redirect:/getListVM";
     }
+
+    @RequestMapping("/connectVM")
+    public String connectVM(@RequestParam(name = "nameVM") String nameVM) {
+
+        vmServies.connectVM(nameVM);
+
+        return "redirect:/getListVM";
+    }
 }

@@ -82,4 +82,17 @@ public class VMController {
             return "Нет";
         }
     }
+
+    /**
+     * Метод подключения к виртуальной машине
+     * @param nameVM имя ВМ к которой подключаемся
+     * @return статус запроса
+     */
+    @RequestMapping("/api/connectVM")
+    public String connectVM(@RequestParam(name = "nameVM") String nameVM) {
+
+        vmServies.connectVM(nameVM);
+
+        return "Подключились к " + nameVM;
+    }
 }

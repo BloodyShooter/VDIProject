@@ -1,6 +1,8 @@
 package org.gvozdetscky.lodic.vms;
 
 import org.gvozdetscky.cmd.CmdClass;
+import org.gvozdetscky.model.VM;
+import org.gvozdetscky.tools.OsUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,13 @@ public class VMS {
     private static final String COMMAND_GET_LIST_VMS = "VBoxManage list vms";
     private static final String COMMAND_GET_RUNNING_LIST_VMS = "VBoxManage list runningvms";
 
+    /**
+     * Режим получения всех виртуальных машин из списка
+     */
     public static final int ALL = 0;
+    /**
+     * Режим получения работающих виртуальных машин из списка
+     */
     public static final int RUNNING = 1;
 
     public List<String> getListVMS(int mode) {
@@ -33,10 +41,17 @@ public class VMS {
         return vms;
     }
 
-    public int startVM(String nameVM) {
+    /**
+     * Метод для запуска виртуальной машины
+     * @param name имя ВМ которую запускаем
+     * @return возврашает статус
+     * 1 - Все хорошо
+     * 2,3 ошибка
+     */
+    public int startVM(String name) {
         CmdClass cmdClass = new CmdClass();
 
-        String command = "VBoxManage startvm \"" + nameVM + "\" --type headless";
+        String command = "VBoxManage startvm \"" + name + "\" --type headless";
 
         List<String> respounse = cmdClass.run(command);
 
@@ -51,6 +66,11 @@ public class VMS {
         return 2;
     }
 
+    /**
+     * Метод отключает питание на виртуальной машине
+     * @param name виртуальная машина которою отрубаем
+     * @return 1 в случае успеха(пока еще ничего другого не придумал)
+     */
     public int powerOffVM(String name) {
         CmdClass cmdClass = new CmdClass();
 
@@ -65,5 +85,19 @@ public class VMS {
         return 1;
     }
 
+    /**
+     * Запускаем подключение к машине через rdp протокол
+     * @param vm Виртуальная машина, откуда будет браться ip и port
+     */
+    public void connectVM(VM vm) {
+
+        CmdClass cmdClass = new CmdClass();
+
+        String command = "mstsc.exe /v:192.168.91.143 /f";
+
+        if (OsUtils.isWindows()) {
+            cmdClass.run(command);
+        }
+    }
 
 }
