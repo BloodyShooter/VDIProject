@@ -100,4 +100,23 @@ public class VMS {
         }
     }
 
+    public int createVM(VM vm) {
+        CmdClass cmdClass = new CmdClass();
+
+        String commadCreate = "VBoxManage createvm --name " + vm.getName() + " --ostype " + vm.getType() + " --register";
+        String commandModifyVM =  "VBoxManage modifyvm " + vm.getName() + " --memory " + vm.getMemory() +
+                " --natpf1 \"rdp,tcp,," + vm.getPort() + ",,22\"";
+
+        System.out.println(commadCreate);
+        System.out.println(commandModifyVM);
+
+        List<String> respounceCreate = cmdClass.run(commadCreate);
+        List<String> respounceModify = cmdClass.run(commandModifyVM);
+
+        respounceCreate.forEach(System.out::println);
+        respounceModify.forEach(System.out::println);
+
+        return 1;
+    }
+
 }

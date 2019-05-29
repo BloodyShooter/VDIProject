@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class LogServiceImpl implements LogService {
 
-    List<String> logs = new ArrayList<>();
+    private List<String> logs = new ArrayList<>();
 
     private final int startIndex = 0;
 

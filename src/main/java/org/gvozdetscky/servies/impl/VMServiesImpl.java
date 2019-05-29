@@ -59,4 +59,9 @@ public class VMServiesImpl implements VMServies {
         vms.connectVM(vm);
 
     }
+
+    @Override
+    public int createVM(VM vm) {
+        return vms.createVM(vm);
+    }
 }

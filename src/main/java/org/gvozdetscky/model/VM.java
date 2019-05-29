@@ -10,6 +10,13 @@ public class VM {
 
     private String port;
 
+    private String type;
+
+    private int memory;
+
+    public VM() {
+    }
+
     public VM(String name, String status) {
         this.name = name;
         this.status = status;
@@ -45,5 +52,21 @@ public class VM {
 
     public void setPort(String port) {
         this.port = port;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getMemory() {
+        return memory;
+    }
+
+    public void setMemory(int memory) {
+        this.memory = memory;
     }
 }

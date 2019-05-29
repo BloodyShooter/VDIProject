@@ -1,5 +1,6 @@
 package org.gvozdetscky.lodic.vms;
 
+import org.gvozdetscky.model.VM;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -39,5 +40,17 @@ public class VMSTest {
         int status = vms.startVM("xubuntu");
 
         assertEquals("Машина не запустилась", 1,status);
+    }
+
+    @Test
+    public void testCreateVM() {
+
+        VM vm = new VM();
+        vm.setName("ubuntu1604");
+        vm.setType("Ubuntu_64");
+        vm.setMemory(2048);
+        vm.setPort("12345");
+
+        vms.createVM(vm);
     }
 }

@@ -1,5 +1,6 @@
 package org.gvozdetscky.controller;
 
+import org.gvozdetscky.model.VM;
 import org.gvozdetscky.servies.LogService;
 import org.gvozdetscky.servies.VMServies;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,22 @@ public class PageController {
     public String connectVM(@RequestParam(name = "nameVM") String nameVM) {
 
         vmServies.connectVM(nameVM);
+
+        return "redirect:/getListVM";
+    }
+
+    @RequestMapping("/createVM")
+    public String connectVM() {
+
+        VM vm = new VM();
+        vm.setName("ubuntu1604");
+        vm.setType("Ubuntu_64");
+        vm.setMemory(2048);
+        vm.setPort("12345");
+
+        vmServies.createVM(vm);
+
+        logService.addLog("Создали машину " + vm.getName());
 
         return "redirect:/getListVM";
     }
