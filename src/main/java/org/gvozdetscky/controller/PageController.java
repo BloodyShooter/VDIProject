@@ -1,5 +1,6 @@
 package org.gvozdetscky.controller;
 
+import org.gvozdetscky.servies.LogService;
 import org.gvozdetscky.servies.VMServies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,9 @@ public class PageController {
     @Autowired
     private VMServies vmServies;
 
+    @Autowired
+    private LogService logService;
+
     /**
      * Метод возврашающий страницу где все функции его виртуальных машин
      * @return возврашает страницу
@@ -21,6 +25,7 @@ public class PageController {
     public String getListVM(Model model) {
 
         model.addAttribute("listVMs", vmServies.listVMs());
+        model.addAttribute("logs", logService.getLogs());
 
         return "ListVM";
     }
@@ -28,7 +33,13 @@ public class PageController {
     @RequestMapping("/runningVM")
     public String runningVM(@RequestParam(name = "nameVM") String nameVM) {
 
-        vmServies.startVM(nameVM);
+        int status = vmServies.startVM(nameVM);
+
+        if (status == 1) {
+            logService.addLog("Запустили ВМ " + nameVM);
+        } else {
+            logService.addLog("Не получилось запустить ВМ " + nameVM);
+        }
 
         return "redirect:/getListVM";
     }
@@ -36,7 +47,13 @@ public class PageController {
     @RequestMapping("/powerOffVM")
     public String powerOffVM(@RequestParam(name = "nameVM") String nameVM) {
 
-        vmServies.powerOffVM(nameVM);
+        int status = vmServies.powerOffVM(nameVM);
+
+        if (status == 1) {
+            logService.addLog("Выключили ВМ " + nameVM);
+        } else {
+            logService.addLog("Не получилось выключить ВМ " + nameVM);
+        }
 
         return "redirect:/getListVM";
     }
