@@ -1,4 +1,4 @@
-package org.gvozdetscky.lodic.vms;
+package org.gvozdetscky.vms.logic;
 
 import org.gvozdetscky.cmd.CmdClass;
 import org.gvozdetscky.model.VM;
@@ -100,21 +100,65 @@ public class VMS {
         }
     }
 
-    public int createVM(VM vm) {
+    /**
+     * Метод который создает ВМ и изменяет некоторые её парметры
+     * Задает имя и тип ОС ВМ.
+     * После изменяет параметры, такие как оператива, и проброс порта(особо с портами пока не заморачивался, проброс на
+     * 22 порт гостевой машины)
+     * @param vm собственно сама машина, которая будет создаватся
+     * @return Возврашает статус выполнения запросов.
+     */
+    public int createAndConfigVM(VM vm) {
         CmdClass cmdClass = new CmdClass();
+        CommandVB commandVB = new CommandVB();
 
-        String commadCreate = "VBoxManage createvm --name " + vm.getName() + " --ostype " + vm.getType() + " --register";
-        String commandModifyVM =  "VBoxManage modifyvm " + vm.getName() + " --memory " + vm.getMemory() +
-                " --natpf1 \"rdp,tcp,," + vm.getPort() + ",,22\"";
+        String commadCreate = commandVB.registrVM(vm.getName(), vm.getType());
+
+        String commadCreateHdd = commandVB.createHDD(vm.getName());
+
+        String coommandCreateSataController = commandVB.createSataController(vm.getName());
+
+        String coommandCreateIdeController = commandVB.createIdeController(vm.getName());
+
+        String commandModifyVM =  commandVB.modifyMemoryAndPortAndVRam(
+                vm.getName(),
+                Integer.toString(vm.getMemory()),
+                vm.getPort()
+        );
+
+        String commandTakeHDD = commandVB.takeHDD(vm.getName(),  vm.getName() + ".vdi");
+
+        String commandTakeDVD = commandVB.takeDVD(vm.getName(), vm.getType());
+
+
 
         System.out.println(commadCreate);
+        System.out.println(commadCreateHdd);
+        System.out.println(coommandCreateSataController);
+        System.out.println(coommandCreateIdeController);
         System.out.println(commandModifyVM);
+        System.out.println(commandTakeHDD);
+        System.out.println(commandTakeDVD);
+
 
         List<String> respounceCreate = cmdClass.run(commadCreate);
+        List<String> respounceCreateHDD = cmdClass.run(commadCreateHdd);
+        List<String> respounceCreateSataController = cmdClass.run(coommandCreateSataController);
+        List<String> respounceCreateIdeController = cmdClass.run(coommandCreateIdeController);
         List<String> respounceModify = cmdClass.run(commandModifyVM);
+        List<String> respounceTakeHDD = cmdClass.run(commandTakeHDD);
+        List<String> respounceTakeDVD = cmdClass.run(commandTakeDVD);
+
+        System.out.println("Размеры " + respounceCreate + ", " + respounceCreateHDD.size() + ", " + respounceCreateSataController.size() + ", " + respounceCreateIdeController.size() + ", " + respounceModify.size() + ", ");
 
         respounceCreate.forEach(System.out::println);
+        respounceCreateHDD.forEach(System.out::println);
+        respounceCreateSataController.forEach(System.out::println);
+        respounceCreateIdeController.forEach(System.out::println);
         respounceModify.forEach(System.out::println);
+        respounceTakeHDD.forEach(System.out::println);
+        respounceTakeDVD.forEach(System.out::println);
+
 
         return 1;
     }

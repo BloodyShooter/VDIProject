@@ -1,4 +1,4 @@
-package org.gvozdetscky.lodic.vms;
+package org.gvozdetscky.vms.logic;
 
 import org.gvozdetscky.model.VM;
 import org.junit.Ignore;
@@ -51,6 +51,6 @@ public class VMSTest {
         vm.setMemory(2048);
         vm.setPort("12345");
 
-        vms.createVM(vm);
+        vms.createAndConfigVM(vm);
     }
 }

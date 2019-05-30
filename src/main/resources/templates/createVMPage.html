@@ -10,10 +10,21 @@
             Имя ВМ:<input type="text" value="Ubuntu" name="name">
         </label>
         <label>
-            Тип ОС:<input type="text" value="Ubuntu_64" name="type">
+            Тип ОС:
+            <select name="type">
+                <option value="Ubuntu_64">Ubuntu 64</option>
+                <option value="Windows10_64">Windows10 64</option>
+                <option value="Windows81_64">Windows8.1 64</option>
+                <option value="Windows7_64">Windows7 64</option>
+            </select>
         </label>
         <label>
-            RAM:<input type="text" value="2048" name="memory">
+            RAM:
+            <select name="memory">
+                <option value="1024">1024Гб</option>
+                <option value="2048">2048Гб</option>
+                <option value="4096">4096Гб</option>
+            </select>
         </label>
         <label>
             Port host:<input type="text" value="12345" name="port">

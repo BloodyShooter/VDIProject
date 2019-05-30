@@ -1,6 +1,6 @@
 package org.gvozdetscky.servies.impl;
 
-import org.gvozdetscky.lodic.vms.VMS;
+import org.gvozdetscky.vms.logic.VMS;
 import org.gvozdetscky.model.VM;
 import org.gvozdetscky.servies.VMServies;
 import org.springframework.stereotype.Service;
@@ -62,6 +62,6 @@ public class VMServiesImpl implements VMServies {
 
     @Override
     public int createVM(VM vm) {
-        return vms.createVM(vm);
+        return vms.createAndConfigVM(vm);
     }
 }
